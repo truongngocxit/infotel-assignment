@@ -1,0 +1,25 @@
+.rc-table {
+  @apply rounded-md border bg-accent/20;
+}
+
+.rc-table table {
+  @apply w-full;
+}
+
+.rc-table .rc-table-cell {
+  @apply p-4;
+}
+
+.rc-table .rc-table-thead,
+.rc-table .rc-table-tbody,
+.rc-table .rc-table-summary {
+  @apply divide-y border-b;
+}
+
+.rc-table .rc-table-thead {
+  @apply bg-accent;
+}
+
+.rc-table-cell-with-append {
+  @apply flex items-center gap-2;
+}
