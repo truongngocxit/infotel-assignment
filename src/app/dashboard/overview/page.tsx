@@ -21,6 +21,7 @@ export default function PageIndex() {
   >(
     sampleActualData.map((entry, index) => ({
       data: {
+        "total-room": entry["Total Room in Hotel"],
         "property-code": entry["Property Code"],
         "total-revenue": entry["Total Revenue"],
         "room-revenue": entry["Room Revenue"],
@@ -69,7 +70,7 @@ export default function PageIndex() {
     }
     return [...acc, ...cur.children];
   }, []);
-  console.log({ filteredData });
+
   return (
     <div className="flex flex-col gap-4">
       <Card className="flex flex-col gap-2">
@@ -92,11 +93,20 @@ export default function PageIndex() {
           columns={sampleActualDataColumns}
           data={data
             .filter((entry) => Boolean(entry.checked))
-            .map((entry) => entry.data)}
+            .map((entry) =>
+              Object.fromEntries(
+                Object.entries(entry.data).map(([key, value]) => [
+                  key,
+                  value.toLocaleString(),
+                ])
+              )
+            )}
           summary={() => (
             <Table.Summary>
               <Table.Summary.Row>
-                <Table.Summary.Cell index={0}>Grand Total</Table.Summary.Cell>
+                <Table.Summary.Cell index={0}>
+                  <span className="font-bold">Grand Total</span>
+                </Table.Summary.Cell>
                 {flattenedDataColumns.slice(1).map((col, index) => (
                   <Table.Summary.Cell key={col.key} index={index + 1}>
                     {filteredData
@@ -105,7 +115,7 @@ export default function PageIndex() {
                         (acc, cur) => acc + Number(cur?.[col?.key] ?? 0),
                         0
                       )
-                      .toFixed(2)}
+                      .toLocaleString()}
                   </Table.Summary.Cell>
                 ))}
               </Table.Summary.Row>

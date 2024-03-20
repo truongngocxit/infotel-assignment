@@ -20,6 +20,7 @@ export interface LineChartProps {
     data: {
       y: number;
       x: string;
+      title: string;
     }[];
     settings?: {
       strokeColor?: string;
@@ -77,18 +78,25 @@ export const LineChart = ({ entries, height }: LineChartProps) => {
         }}
         renderTooltip={({ tooltipData }) => {
           return (
-            <div>
+            <div className="p-2">
               {tooltipData &&
                 Object.entries(tooltipData?.datumByKey).map((lineDataArray) => {
                   const [key, value] = lineDataArray;
 
                   return (
-                    <div className="row" key={key}>
-                      <div className="date">
-                        {format(accessors.xAccessor(value.datum), "MMM d")}
+                    <div className="flex gap-2 items-center" key={key}>
+                      <div className="font-normal">
+                        {
+                          (
+                            value.datum as {
+                              title: string;
+                              [key: string]: string;
+                            }
+                          )?.title
+                        }
+                        :
                       </div>
                       <div className="value">
-                        {/* <ColoredSquare color="#008561" /> */}
                         {accessors.yAccessor(value.datum)}
                       </div>
                     </div>

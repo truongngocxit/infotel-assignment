@@ -2,7 +2,6 @@
 import { dashboardSampleV0_4MealDetailData as SAMPLE_DATA } from "@/lib/data/sampledata_meal_detail";
 import { PlusIcon, MinusIcon } from "@/components/icons";
 import { Card } from "@/components/ui/card";
-
 import Table from "rc-table";
 
 import { COST_SUMMARY_COLUMNS } from "@/lib/constants/tables";
@@ -51,12 +50,17 @@ const getCostData = (entry: Record<string, any>) => {
 
 export default function PageIndex() {
   return (
-    <Card>
+    <Card className="gap-4 flex flex-col">
+      <span className="text-2xl font-bold">
+        Expected and Actual Count and Sales
+      </span>
+
       <Table
+        scroll={{ x: 2000, y: 500 }}
         rowKey={"name"}
         columns={BY_DATE_COLUMNS}
         data={SAMPLE_DATA.map((entry) => ({
-          data: entry.report_date,
+          date: entry.report_date,
           ...getCostData(entry),
         }))}
         expandable={{
@@ -99,7 +103,6 @@ export default function PageIndex() {
                     </button>
                   ),
                   expandedRowRender: (record, index, indent, expanded) => {
-                    console.log({ record });
                     return expanded ? (
                       <Table
                         columns={BY_MEALS_COLUMNS}

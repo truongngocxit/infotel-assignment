@@ -1,5 +1,5 @@
 import { authMiddleware } from "@clerk/nextjs";
-import { NextResponse } from "next/server";
+
 export default authMiddleware({
   // Allow signed out users to access the specified routes:
   // publicRoutes: ['/anyone-can-visit-this-route'],
@@ -7,10 +7,6 @@ export default authMiddleware({
   // authentication information:
   // ignoredRoutes: ['/no-auth-in-this-route'],
 });
-
-// export const middleware = async () => {
-//   return NextResponse.next();
-// };
 
 export const config = {
   matcher: [

@@ -14,16 +14,15 @@ export const NavigationBar = () => {
   const segment = useSelectedLayoutSegment();
 
   return (
-    <div className="w-[240px] border-r flex flex-col h-full max-h-full">
+    <div className="w-full md:w-[240px] border-r flex md:flex-col h-[60px] md:h-full max-h-full">
       <div className="p-3">
         <Link href="/dashboard/overview" className="flex items-center gap-2">
           <Logo className="text-brand w-8" />
-          <span className="font-bold text-2xl">HMS</span>
+          <span className="hidden md:block font-bold text-2xl">HMS</span>
         </Link>
-
-        <SeparatorRoot className="h-[1px] bg-border mt-4" />
       </div>
-      <nav className={cn("flex flex-col")}>
+      <SeparatorRoot className="mb-4 w-[1px] h-full md:w-full md:h-[1px] bg-border" />
+      <nav className={cn("flex md:flex-col")}>
         {DASHBOARD_ROUTES.map((route) => (
           <Link
             key={route.slug}
@@ -31,20 +30,20 @@ export const NavigationBar = () => {
             className={cn(
               "flex items-center gap-3 px-5 py-4 hover:bg-brand/20",
               segment === route.slug
-                ? "bg-brand/20 text-brand border-r-2 border-brand"
+                ? "bg-brand/20 text-brand border-b-2 border-r-0 md:border-b-0 md:border-r-2 border-brand"
                 : ""
             )}
           >
             {<route.icon className="w-5" />}
-            {route.label}
+            <span className="hidden md:block">{route.label}</span>
           </Link>
         ))}
       </nav>
-      <div className="p-3 mt-auto">
-        <SeparatorRoot className="h-[1px] bg-border mb-4" />
+      <div className="w-full p-3 md:mt-auto flex md:flex-col">
+        <SeparatorRoot className="hidden md:block mt-auto w-[1px] h-full md:w-full md:h-[1px] bg-border mb-4" />
         <DropdownMenu.Root>
           <DropdownMenu.Trigger asChild>
-            <button className="IconButton" aria-label="Customise options">
+            <button className="ml-auto md:ml-0 self-center md:self-start">
               <UserIcon />
             </button>
           </DropdownMenu.Trigger>

@@ -12,6 +12,7 @@ const DATA = [
   {
     id: 1,
     data: sampleForecastData.map((entry) => ({
+      title: "Arr. Rooms",
       y: entry["Arr. Rooms"],
       x: format(parse(entry.Date, "dd-MMM-yyyy", new Date()), "yyyy-MM-dd"),
     })),
@@ -22,6 +23,7 @@ const DATA = [
   {
     id: 2,
     data: sampleForecastData.map((entry) => ({
+      title: "Dep. Rooms",
       y: entry["Dep. Rooms"],
       x: format(parse(entry.Date, "dd-MMM-yyyy", new Date()), "yyyy-MM-dd"),
     })),
@@ -32,6 +34,7 @@ const DATA = [
   {
     id: 3,
     data: sampleForecastData.map((entry) => ({
+      title: "Total Occ.",
       y: entry["Total Occ."],
       x: format(parse(entry.Date, "dd-MMM-yyyy", new Date()), "yyyy-MM-dd"),
     })),

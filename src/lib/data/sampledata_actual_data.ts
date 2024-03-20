@@ -93,8 +93,6 @@ export const sampleActualDataColumns = [
   },
 ];
 
-export const sampleActualProperties = [];
-
 export const sampleActualData = [
   {
     Cluster: "Master",
