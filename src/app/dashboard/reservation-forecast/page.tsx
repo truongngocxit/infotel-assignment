@@ -4,7 +4,7 @@ import { sampleForecastData } from "@/lib/data/sampledata_forecast";
 import { format, parse } from "date-fns";
 import { useMemo, useState } from "react";
 import { Select } from "@/components/ui/select";
-import { FORECAST_PERIODS } from "@/lib/constants/misc";
+import { FORECAST_PERIODS } from "@/lib/constants/tables";
 import { differenceInCalendarMonths, addMonths } from "date-fns";
 import { Card } from "@/components/ui/card";
 
@@ -59,7 +59,7 @@ export default function PageIndex() {
 
   return (
     <>
-      <Card className="h-96 flex flex-col">
+      <Card className="h-[80vh] flex flex-col">
         <div className="flex justify-between">
           <span className="text-2xl font-bold">Sales forecast</span>
           <Select

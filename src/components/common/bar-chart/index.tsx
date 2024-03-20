@@ -14,7 +14,7 @@ type Data = {
 export type Entry = {
   id: React.Key;
   title: string;
-  data: number;
+  data: number | string;
   color?: string;
 };
 
@@ -33,7 +33,7 @@ export const BarChart = ({ entries }: BarChartProps) => {
         <XYChart
           height={height || 500}
           width={width}
-          xScale={{ type: "band", padding: 0.4 }}
+          xScale={{ type: "band", padding: 0.2 }}
           yScale={{ type: "linear" }}
         >
           <Grid
@@ -50,8 +50,8 @@ export const BarChart = ({ entries }: BarChartProps) => {
             radius={4}
             radiusTop
           />
-          <Axis hideAxisLine hideTicks numTicks={4} orientation="left" />
-          <Axis hideAxisLine hideTicks orientation="bottom" rangePadding={10} />
+          <Axis hideZero numTicks={4} orientation="left" />
+          <Axis orientation="bottom" rangePadding={50} />
         </XYChart>
       )}
     </ParentSize>

@@ -2,26 +2,34 @@ import * as Popover from "@radix-ui/react-popover";
 
 import { Checkbox } from "../checkbox";
 import { ChevronDownIcon } from "@/components/icons";
+import { cn } from "@/lib/utils/cn";
 export interface CheckboxesDropdown {
-  label?: string;
+  label?: React.ReactNode;
   options: {
     value: string;
-    label: React.ReactNode;
+    label: string;
     checked: boolean;
     [key: string]: any;
   }[];
   onCheckedChange?: (id: string, checked: boolean) => void;
+  className?: string;
 }
 
 export const CheckboxesDropdown = ({
   options,
   label = "Select",
   onCheckedChange,
+  className = "",
 }: CheckboxesDropdown) => {
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
-        <button className="border rounded-md px-2 py-1 gap-2 w-max flex items-center">
+        <button
+          className={cn(
+            "border rounded-md px-2 py-1 gap-2 w-max flex items-center",
+            className
+          )}
+        >
           {label}
           <ChevronDownIcon className="w-5" />
         </button>

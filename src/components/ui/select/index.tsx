@@ -17,7 +17,7 @@ export interface SelectProps {
     label: React.ReactNode;
     [key: string]: any;
   }[];
-  placeholder?: string;
+  placeholder?: React.ReactNode;
   onChange?: (value: string) => void;
   value?: string;
   className?: string;
