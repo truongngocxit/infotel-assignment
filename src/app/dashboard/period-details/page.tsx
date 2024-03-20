@@ -78,7 +78,8 @@ export default function PageIndex() {
             return expanded ? (
               <Table
                 columns={BY_RVC_COLUMNS}
-                data={record.outlet.map((outlet) => ({
+                // @ts-ignore
+                data={record?.outlet.map((outlet) => ({
                   outlet_code: outlet.outlet_code,
                   ...getCostData(outlet),
                 }))}
