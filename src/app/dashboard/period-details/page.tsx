@@ -2,7 +2,7 @@
 import { dashboardSampleV0_4MealDetailData as SAMPLE_DATA } from "@/lib/data/sampledata_meal_detail";
 import { PlusIcon, MinusIcon } from "@/components/icons";
 import { Card } from "@/components/ui/card";
-import * as XLSX from "xlsx";
+
 import Table from "rc-table";
 
 import { COST_SUMMARY_COLUMNS } from "@/lib/constants/tables";
@@ -50,22 +50,8 @@ const getCostData = (entry: Record<string, any>) => {
 };
 
 export default function PageIndex() {
-  const handleConvertToCsv = (obj: Object) => {
-    // Convert data to worksheet
-    const ws = XLSX.utils.json_to_sheet(SAMPLE_DATA);
-
-    // Create a workbook and add the worksheet
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-
-    // Save the workbook as an XLSX file
-    XLSX.writeFile(wb, "data.xlsx");
-  };
   return (
     <Card>
-      <button onClick={() => handleConvertToCsv(SAMPLE_DATA)}>
-        Convert csv
-      </button>
       <Table
         rowKey={"name"}
         columns={BY_DATE_COLUMNS}
